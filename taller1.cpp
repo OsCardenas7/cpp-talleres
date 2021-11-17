@@ -51,6 +51,7 @@ float Azar::getPromedio() {
 }
 
 void Azar::generar() {
+  int aux;
   suma = 0;
   mayor = 0;
   menor = 999;
@@ -69,7 +70,15 @@ void Azar::generar() {
   desviacion /= 50.0;
   desviacion = sqrt(desviacion);
   // mediana
-  sort(numeros, numeros + 50);
+  for (int i = 0; i < 50; i++) {
+    for (int j = i + 1; j < 50; j++) {
+      if (numeros[j] < numeros[i]) {
+        aux = numeros[i];
+        numeros[i] = numeros[j];
+        numeros[j] = aux;
+      }
+    }
+  }
   mediana = (numeros[24] + numeros[25]) / 2.0;
 }
 
